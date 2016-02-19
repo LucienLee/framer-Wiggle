@@ -2,8 +2,10 @@
 Wiggle Module for FramerJS
 Created by Lucien Lee (@luciendeer), Feb. 17th, 2016
 ###
+
 class Wiggle extends Framer.BaseClass
 
+  # wiggle frequence (per sec)
   @define "freq",
     get: -> @_freq,
     set: (value)->
@@ -11,6 +13,7 @@ class Wiggle extends Framer.BaseClass
         @_freq = value
         @_updateWiggleAniamtion()
 
+  # wiggle amplitude
   @define "amp",
     get: -> @_amp,
     set: (value)->
@@ -18,16 +21,28 @@ class Wiggle extends Framer.BaseClass
         @_amp = value
         @_updateWiggleAniamtion()
 
-  @define "isWiggling", get: -> @_isWiggling or false
+  # wiggle amplitude variance
+  @define "variance",
+    get: -> @_variance,
+    set: (value)->
+      if _.isNumber(value)
+        @_variance = value
+        @_updateWiggleAniamtion()
+
+  # keep wiggling when dragging
   @define "wiggleWhenDragging",
     get: -> @_keepWiggling
     set: (value)-> @_keepWiggling = value if _.isBoolean value
 
+  @define "isWiggling", get: -> @_isWiggling or false
+
   constructor: (@layer)->
     super
 
-    @freq = .075
-    @amp = 3
+    @freq = 5
+    @amp = 1
+    @variance = 2
+
     @_keepWiggling = false
     @oringinalRotate = @layer.rotation
 
@@ -36,39 +51,53 @@ class Wiggle extends Framer.BaseClass
         if @_isWiggling and not @_keepWiggling then @_resetFrame()
 
     @layer.on Events.DragStart, =>
-        if @_keepWiggling then @left.start()
+        if @_keepWiggling then Utils.randomChoice(@Animations).start()
 
     @layer.on Events.DragEnd, =>
-      if @_isWiggling and not @_keepWiggling then @left.start()
+      if @_isWiggling and not @_keepWiggling then Utils.randomChoice(@Animations).start()
 
   _updateWiggleAniamtion: ->
-    @left = new Animation
-      layer: @layer
-      properties:
-        rotation: @amp
-        originX: .4
-      time: @freq
+    @Animations = []
+    length = 4
+    halfDuration = 1/@freq/2
+    originShift = 0.25
 
-    @right = new Animation
-      layer: @layer
-      properties:
-        rotation: -@amp
-        originX: .6
-      time: @freq
+    for i in [0...length]
+      rotationShift = Utils.randomNumber(0, @variance)
+      print rotationShift
+      @Animations[2*i] = new Animation
+        layer: @layer
+        properties:
+          rotation: @amp+rotationShift
+          originX: 0.5-originShift
+        time: halfDuration
 
-    @left.on( Events.AnimationEnd, @right.start )
-    @right.on( Events.AnimationEnd, @left.start )
+      @Animations[2*i+1] = new Animation
+        layer: @layer
+        properties:
+          rotation: -(@amp+rotationShift)
+          originX: 0.5+originShift
+        time: halfDuration
+
+    for animation, index in @Animations
+      if index is @Animations.length-1
+        animation.on(Events.AnimationEnd, @Animations[0].start )
+      else
+        animation.on( Events.AnimationEnd, ((index)->
+          @Animations[index+1].start()
+        ).bind(this, index))
 
   _resetFrame: ->
     @layer.rotation = @oringinalRotate
+    @layer.originX = .5
 
   start: ->
-    @left.start()
+    Utils.randomChoice(@Animations).start()
     @_isWiggling = true
 
   stop: ->
-    @left.stop()
-    @right.stop()
+    for animation in @Animations
+      animation.stop()
     @_resetFrame()
     @_isWiggling = false
 
