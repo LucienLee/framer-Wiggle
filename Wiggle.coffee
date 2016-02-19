@@ -60,8 +60,8 @@ class Wiggle extends Framer.BaseClass
     super
 
     @freq = 6
-    @amp = 1
-    @variance = 2
+    @amp = 2
+    @variance = 1
 
     @_keepWiggling = false
     @oringinalRotate = @layer.rotation
@@ -83,7 +83,7 @@ class Wiggle extends Framer.BaseClass
     originShift = 0.25
 
     for i in [0...length]
-      rotationShift = Utils.randomNumber(0, @variance)
+      rotationShift = Utils.randomNumber(-@variance, @variance)
 
       @Animations[2*i] = new Animation
         layer: @layer
