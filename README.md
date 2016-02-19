@@ -26,11 +26,12 @@ layerA = new Layer
 # wiggle frequency per sec, default is 6
 layerA.wiggle.freq = 6
 
-# wiggle amplitude, default is 1
-layerA.wiggle.amp = 1
+# wiggle amplitude, default is 2
+layerA.wiggle.amp = 2
 
-# wiggle amplitude variance, which make wiggling more randomly, default is 2
-layerA.wiggle.variance = 2
+# wiggle amplitude variance, which make wiggling more randomly, default is 1
+# Wiggle strength range would be in [amp+variance, amp-variance]
+layerA.wiggle.variance = 1
 
 # Keep wiggling while the layer being dragged, default is false
 layerA.wiggleWhenDragging = false
