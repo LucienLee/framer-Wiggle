@@ -3,7 +3,7 @@ Wiggle Module for FramerJS
 Created by Lucien Lee (@luciendeer), Feb. 17th, 2016
 https://github.com/LucienLee/framer-Wiggle
 
-Wiggle Module provide wiggle effect to every Layer in FramerJS.
+Wiggle Module help you creating wiggle effect in FramerJS.
 
 Add the following line to your project in Framer Studio.
   require 'Wiggle'
