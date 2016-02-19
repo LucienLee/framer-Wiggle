@@ -1,6 +1,26 @@
 ###
 Wiggle Module for FramerJS
 Created by Lucien Lee (@luciendeer), Feb. 17th, 2016
+https://github.com/LucienLee/framer-Wiggle
+
+Wiggle Module provide wiggle effect to every Layer in FramerJS.
+
+Add the following line to your project in Framer Studio.
+  require 'Wiggle'
+
+[Configure wiggle]
+layer.wiggle =
+  freq: 6 //wiggle frequence (per sec)
+  amp: 1 // wiggle amplitude
+  variance: 2 // wiggle amplitude variance
+  wiggleWhenDragging: false // keep wiggling when dragging or not
+
+[Wiggle!]
+layer.wiggle.start()
+layer.wiggle.stop()
+
+[Check wiggle state]
+layer.wiggle.isWiggling //return true or false
 ###
 
 class Wiggle extends Framer.BaseClass
@@ -39,7 +59,7 @@ class Wiggle extends Framer.BaseClass
   constructor: (@layer)->
     super
 
-    @freq = 5
+    @freq = 6
     @amp = 1
     @variance = 2
 
@@ -64,7 +84,7 @@ class Wiggle extends Framer.BaseClass
 
     for i in [0...length]
       rotationShift = Utils.randomNumber(0, @variance)
-      print rotationShift
+
       @Animations[2*i] = new Animation
         layer: @layer
         properties:
