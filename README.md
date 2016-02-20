@@ -2,6 +2,11 @@
 A module to create wiggle effect in Framer.
 
 ## Demo
+Here is [live demo](http://share.framerjs.com/cgkx4owahc15/).
+
+![demo](https://github.com/LucienLee/framer-Wiggle/blob/demo/demo.gif)
+
+Please check the [demo](https://github.com/LucienLee/framer-Wiggle/tree/demo) branch.
 
 ## Getting started
 ### Add it in your Framer project
