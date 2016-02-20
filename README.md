@@ -63,7 +63,7 @@ Whether the layer is currently wiggling
 layerA = new Layer
 layerA.wiggle.start()
 
-# Check if layerA iswiggling 
+# Check if layerA is wiggling 
 print layerA.wiggle.isWiggling
 ```
 
