@@ -66,7 +66,7 @@ class Wiggle extends Framer.BaseClass
     @_keepWiggling = false
     @oringinalRotate = @layer.rotation
 
-    @layer.on Events.TouchStart, =>
+    @layer.on Events.TapStart, =>
       if @layer.draggable.enabled is true
         if @_isWiggling and not @_keepWiggling then @_resetFrame()
 
