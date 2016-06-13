@@ -100,11 +100,11 @@ for color, index in colors
 		        properties: getFrameByIndex(previousIndex)
         		curve: "spring(300,40,0)"
 		
-	block.onTapStart ->
+	block.on Events.DragSessionStart, ->
 		if not @draggable.enabled then return
 		DraggingAnimation.hold @
 
-	block.onDragEnd ->
+	block.on Events.DragSessionEnd, ->
 		targetFrame = getFrameByIndex _.findIndex layers, @
 		DraggingAnimation.release @, targetFrame
 
