@@ -66,15 +66,12 @@ class Wiggle extends Framer.BaseClass
     @_keepWiggling = false
     @oringinalRotate = @layer.rotation
 
-    @layer.on Events.TapStart, =>
-      if @layer.draggable.enabled is true
-        if @_isWiggling and not @_keepWiggling then @_resetFrame()
+    @layer.on Events.DragSessionStart, =>
+      if not @_keepWiggling then @stop()
 
-    @layer.on Events.DragStart, =>
-        if @_keepWiggling then Utils.randomChoice(@Animations).start()
+    @layer.on Events.DragSessionEnd, =>
+      if not @_keepWiggling then @start()
 
-    @layer.on Events.DragEnd, =>
-      if @_isWiggling and not @_keepWiggling then Utils.randomChoice(@Animations).start()
 
   _updateWiggleAniamtion: ->
     @Animations = []
