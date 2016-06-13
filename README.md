@@ -14,6 +14,15 @@ Please check the [demo](https://github.com/LucienLee/framer-Wiggle/tree/demo) br
 - Download [Wiggle.coffee](https://github.com/LucienLee/framer-Wiggle/blob/master/wiggle.coffee) and put it in the module folder of the project
 - At the top of your code, write `require "Wiggle.coffee"`
 
+#### Install with npm
+If you're familiar with npm, you could install with following commands.
+
+```Shell
+$ cd <myProject>.framer
+$ npm install framer-wiggle
+$ ln node_modules/framer-wiggle/Wiggle.coffee modules/
+```
+
 ### Quickstart
 No more setup, enable wiggling for the layer straightly.
 
@@ -39,7 +48,7 @@ layerA.wiggle.amp = 2
 layerA.wiggle.variance = 1
 
 # Keep wiggling while the layer being dragged, default is false
-layerA.wiggleWhenDragging = false
+layerA.wiggle.wiggleWhenDragging = false
 
 
 # You could set up all propery with an object

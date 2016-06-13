@@ -1,0 +1,24 @@
+{
+  "name": "framer-wiggle",
+  "version": "1.2.0",
+  "description": "A module to create wiggle effect in Framer.",
+  "main": "Wiggle.coffee",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucienLee/framer-Wiggle.git"
+  },
+  "author": {
+    "name": "Lucien Lee",
+    "email": "lucien@lucienlee.cc"
+  },
+  "license": "MIT",
+  "bugs": {
+    "type": "git",
+    "url": "https://github.com/LucienLee/framer-Wiggle/issues"
+  },
+  "homepage": "https://github.com/LucienLee/framer-Wiggle#readme",
+  "keywords": [
+    "prototyping",
+    "framerjs"
+  ]
+}
