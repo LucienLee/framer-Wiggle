@@ -1,6 +1,6 @@
 {
   "name": "framer-wiggle",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A module to create wiggle effect in Framer.",
   "main": "Wiggle.coffee",
   "repository": {
