@@ -48,7 +48,7 @@ layerA.wiggle.amp = 2
 layerA.wiggle.variance = 1
 
 # Keep wiggling while the layer being dragged, default is false
-layerA.wiggleWhenDragging = false
+layerA.wiggle.wiggleWhenDragging = false
 
 
 # You could set up all propery with an object
