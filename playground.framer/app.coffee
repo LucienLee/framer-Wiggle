@@ -110,6 +110,21 @@ panel = new Layer
 	y: Align.bottom(-50)
 panel.style.boxShadow = "0 1px 1px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1)"
 
+# Github Link
+link = new Layer
+	width: 210
+	height: 28
+	html: "Check wiggle module on Github"
+	backgroundColor: null
+	x: Align.center
+	y: Align.bottom
+	style: 
+		"font": "100 14px/1 SF UI Text, Helvetica Neue"
+		"text-align": "center"
+		"text-decoration": "underline"
+
+link.onClick ->
+	document.location = "https://github.com/LucienLee/framer-Wiggle"	
 
 # Slider layer
 index = 0
@@ -190,8 +205,3 @@ switchLayer.on 'change:value', ->
 		wiggleLayer.wiggle.wiggleWhenDragging = true
 	else 
 		wiggleLayer.wiggle.wiggleWhenDragging = false
-
-			
-
-
-
